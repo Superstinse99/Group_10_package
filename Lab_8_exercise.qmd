@@ -24,3 +24,73 @@ codon_table <- c("UUU" = "F", "UCU" = "S", "UAU" = "Y", "UGU" = "C",
   "GUA" = "V", "GCA" = "A", "GAA" = "E", "GGA" = "G",
   "GUG" = "V", "GCG" = "A", "GAG" = "E", "GGG" = "G")
 ```
+
+### function one
+
+```{r}
+generateRandomDNASequence <- function(sequenceLength){
+  randomNucleotides <- sample(c("A", "T", "G", "C"), 
+                              size = sequenceLength, replace = TRUE)
+  randomDNASequence <- paste0(randomNucleotides, collapse = "")
+  return(randomDNASequence)
+}
+```
+
+### function two
+
+```{r}
+substitueDNARNA <- function(DNA_sequence){
+  RNA_sequence <- gsub("T", "U", DNA_sequence)
+  return(RNA_sequence)
+}
+```
+
+### function three
+
+```{r}
+settingReadingFrameCodons <- function(dnaSequence, start = 1){
+  sequenceLength <- nchar(dnaSequence)
+  codons <- substring(dnaSequence,
+                      first = seq(from = start, to = sequenceLength - 3 + 1, by = 3),
+                      last = seq(from = 3 + start - 1, to = sequenceLength, by = 3))
+  return(codons)
+}
+
+```
+
+### Function four
+
+```{r}
+generateProteinFromCodons <- function(codons){
+  # Replace 'NAME_OF_YOUR_OBJECT' with the appropriate object or data
+  proteins <- paste0(codon_table[codons], collapse = "")
+  return(proteins)
+}
+
+```
+
+### function five
+
+```{r}
+generateAminoAcidFrequencyPlot <- function(proteinSequence){
+  amino_acids <- proteinSequence |>
+    stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
+    as.character() |>
+    unique()
+  
+  amino_acid_counts <- sapply(amino_acids, function(amino_acid) stringr::str_count(string = proteinSequence, pattern = amino_acid)) |>
+    as.data.frame()
+  
+  colnames(amino_acid_counts) <- c("Counts")
+  amino_acid_counts[["AminoAcid"]] <- rownames(amino_acid_counts)
+  
+  frequency_plot <- amino_acid_counts |>
+    ggplot2::ggplot(ggplot2::aes(x = AminoAcid, y = Counts, fill = AminoAcid)) +
+    ggplot2::geom_col() +
+    ggplot2::theme_bw() +
+    ggplot2::theme(legend.position = "none")
+  
+  return(frequency_plot)
+}
+
+```

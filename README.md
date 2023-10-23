@@ -1,34 +1,36 @@
----
-title: "VignetteCenMolBio"
-output: rmarkdown::pdf_vignette
-vignette: >
-  %\VignetteIndexEntry{VignetteCenMolBio}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-The 'CentralMolBio' package, is a collection of useful functions for analysing biological data.
-including reading, subtitute and translating sequences.
+# centralMolBio
 
-The package can be install either of these methods:
-- devtools::install_github("Superstinse99/centralMolBio")
-- install.packages("centralMolBio")
+<!-- badges: start -->
+<!-- badges: end -->
+
+The ‘CentralMolBio’ package, is a collection of useful functions for
+analysing biological data. including reading, subtitute and translating
+sequences.
+
+## Installation
+
+The package can be install either of these methods: -
+devtools::install_github(“Superstinse99/Group_10_package”) -
+install.packages(“Group_10_package”)
+
+``` r
+# install.packages("devtools")
+devtools::install_github("Superstinse99/group_10_package")
 
 
-```{r setup}
+
+```r
 library(centralMolBio)
 ```
 
+## Codon Table
+
 The given codon table is used in the package:
 
-```{r}
+``` r
 codon_table <- c("UUU" = "F", "UCU" = "S", "UAU" = "Y", "UGU" = "C",
   "UUC" = "F", "UCC" = "S", "UAC" = "Y", "UGC" = "C",
   "UUA" = "L", "UCA" = "S", "UAA" = "_", "UGA" = "_",
@@ -47,10 +49,10 @@ codon_table <- c("UUU" = "F", "UCU" = "S", "UAU" = "Y", "UGU" = "C",
   "GUG" = "V", "GCG" = "A", "GAG" = "E", "GGG" = "G")
 ```
 
-Function 1:
-The first function in the package is generating a random sequence of the bases in the desired length
+Function 1: The first function in the package is generating a random
+sequence of the bases in the desired length
 
-```{r}
+``` r
 generateRandomDNASequence <- function(sequenceLength){
   randomNucleotides <- sample(c("A", "T", "G", "C"), 
                               size = sequenceLength, replace = TRUE)
@@ -59,22 +61,21 @@ generateRandomDNASequence <- function(sequenceLength){
 }
 ```
 
+Function 2: The second function in the package is a translation, where T
+is replaced with U, therefore transcribing DNA to RNA
 
-Function 2:
-The second function in the package is a translation, where T is replaced with U, therefore transcribing DNA to RNA
-
-```{r}
+``` r
 substitueDNARNA <- function(DNA_sequence){
   RNA_sequence <- gsub("T", "U", DNA_sequence)
   return(RNA_sequence)
 }
 ```
 
+Function 3: The third function in the package is taking in the DNA
+sequence, indicating start of the sequence at one, and then reading it
+in codons, also known as the reading frame of the sequence.
 
-Function 3:
-The third function in the package is taking in the DNA sequence, indicating start of the sequence at one, and then reading it in codons, also known as the reading frame of the sequence.
-
-```{r}
+``` r
 settingReadingFrameCodons <- function(dnaSequence, start = 1){
   sequenceLength <- nchar(dnaSequence)
   codons <- substring(dnaSequence,
@@ -82,25 +83,22 @@ settingReadingFrameCodons <- function(dnaSequence, start = 1){
                       last = seq(from = 3 + start - 1, to = sequenceLength, by = 3))
   return(codons)
 }
-
 ```
 
+Function 4: The fourth function in the package is a translation of the
+RNA, generating the translated amino acids of the sequence.
 
-Function 4:
-The fourth function in the package is a translation of the RNA, generating the translated amino acids of the sequence. 
-
-```{r}
+``` r
 generateAAFromCodons <- function(codons){
   AA <- paste0(codon_table[codons], collapse = "")
   return(AA)
 }
 ```
 
+Function 5: The fifth function in the package is plotting the frequency
+of each amino acid observed in the sequence.
 
-Function 5:
-The fifth function in the package is plotting the frequency of each amino acid observed in the sequence. 
-
-```{r}
+``` r
 generateAminoAcidFrequencyPlot <- function(Sequence){
   amino_acids <- Sequence |>
     stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
@@ -122,5 +120,3 @@ generateAminoAcidFrequencyPlot <- function(Sequence){
   return(frequency_plot)
 }
 ```
-
-
