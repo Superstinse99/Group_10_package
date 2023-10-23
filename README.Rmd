@@ -24,8 +24,8 @@ including reading, subtitute and translating sequences.
 ## Installation
 
 The package can be install either of these methods:
-- devtools::install_github("Superstinse99/centralMolBio")
-- install.packages("centralMolBio")
+- devtools::install_github("Superstinse99/Group_10_package")
+- install.packages("Group_10_package")
 ``` r
 # install.packages("devtools")
 devtools::install_github("Superstinse99/group_10_package")

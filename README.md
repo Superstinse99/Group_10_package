@@ -12,9 +12,11 @@ sequences.
 
 ## Installation
 
-The package can be install either of these methods: -
-devtools::install_github(“Superstinse99/Group_10_package”) -
-install.packages(“Group_10_package”)
+The package can be install either of these methods:
+
+- devtools::install_github(“Superstinse99/Group_10_package”)
+
+- install.packages(“Group_10_package”)
 
 ``` r
 # install.packages("devtools")
