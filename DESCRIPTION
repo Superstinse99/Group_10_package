@@ -1,0 +1,17 @@
+Package: centralMolBio
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: c(person(given = "Christina",
+           family = "Christiansen",
+           role = c("aut", "cre"),
+           email = "s223094@email.com")
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Purpose of the package, is to perform basic central molecular biology tasks, as codon reading and translation
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
