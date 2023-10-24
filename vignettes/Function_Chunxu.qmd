@@ -1,0 +1,79 @@
+---
+title: "Function_Chunxu"
+format: html
+editor: visual
+---
+
+## Function 1:
+
+```{r}
+# Defilne a function to generate a DNA sequence randomly with a given length
+generateRandomDNASequence <- function(sequenceLength){
+  randomNucleotides <- sample(c("A", "T", "G", "C"),
+                              size = sequenceLength, replace = TRUE)
+  randomDNASequence <- paste0(randomNucleotides, collapse = "")
+  return(randomDNASequence)
+}
+```
+
+## Function 2:
+
+```{r}
+# Define a function to transcribe the DNA sequence to RNA sequence by subsitiuting all the T to U
+substitueDNARNA <- function(DNA_sequence){
+  RNA_sequence <- gsub("T", "U", DNA_sequence)
+  return(RNA_sequence)
+}
+```
+
+## Function 3:
+
+```{r}
+# Define a function to set reading frame codons with a given DNA sequence and start point
+# Defaultly, it will start from the beginning of the DNA sequence
+settingReadingFrameCodons <- function(dnaSequence, start = 1){
+  sequenceLength <- nchar(dnaSequence)
+  codons <- substring(dnaSequence,
+                      first = seq(from = start, to = sequenceLength - 3 + 1, by = 3),
+                      last = seq(from = 3 + start - 1, to = sequenceLength, by = 3))
+  return(codons)
+}
+```
+
+## Function 4:
+
+```{r}
+# Define a function to translate the codons to amino acids sequence
+# It should be applied after reading frame codons setting done by settingReadingFrameCodons()
+# If you aim to translate a DNA sequence to AA sequence, please implement a combination of settingReadingFrameCodons() and generateAAFromCodons()
+generateAAFromCodons <- function(codons){
+  AA <- paste0(codon_table[codons], collapse = "")
+  return(AA)
+}
+```
+
+## Function 5:
+
+```{r}
+# Define a function to generates an Amino Acid Frequency Plot by computing the frequency of each amino acid in a given amino acid sequence and visualizing the results in a bar chart
+# If you have a DNA sequence, and aim to check the AA frequency distribution of its translated peptide, please implement substitueDNARNA(), settingReadingFrameCodons(), generateAAFromCodons() and generateAminoAcidFrequencyPlot() sequentially.
+generateAminoAcidFrequencyPlot <- function(Sequence){
+  amino_acids <- Sequence |>
+    stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
+    as.character() |>
+    unique()
+
+  amino_acid_counts <- sapply(amino_acids, function(amino_acid) stringr::str_count(string = Sequence, pattern = amino_acid)) |>
+    as.data.frame()
+
+  colnames(amino_acid_counts) <- c("Counts")
+  amino_acid_counts[["AminoAcid"]] <- rownames(amino_acid_counts)
+
+  frequency_plot <- amino_acid_counts |>
+    ggplot2::ggplot(ggplot2::aes(x = AminoAcid, y = Counts, fill = AminoAcid)) +
+    ggplot2::geom_col() +
+    ggplot2::theme_bw() +
+    ggplot2::theme(legend.position = "none")
+
+  return(frequency_plot)
+```
