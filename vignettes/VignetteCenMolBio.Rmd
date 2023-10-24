@@ -3,8 +3,11 @@ title: "VignetteCenMolBio"
 output: rmarkdown::pdf_vignette
 vignette: >
   %\VignetteIndexEntry{VignetteCenMolBio}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r, include = FALSE}
@@ -14,13 +17,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-The 'CentralMolBio' package, is a collection of useful functions for analysing biological data.
-including reading, subtitute and translating sequences.
+The 'CentralMolBio' package, is a collection of useful functions for
+analysing biological data. including reading, subtitute and translating
+sequences.
 
-The package can be install either of these methods:
-- devtools::install_github("Superstinse99/centralMolBio")
-- install.packages("centralMolBio")
-
+The package can be install either of these methods: -
+devtools::install_github("Superstinse99/centralMolBio") -
+install.packages("centralMolBio")
 
 ```{r setup}
 library(centralMolBio)
@@ -47,8 +50,8 @@ codon_table <- c("UUU" = "F", "UCU" = "S", "UAU" = "Y", "UGU" = "C",
   "GUG" = "V", "GCG" = "A", "GAG" = "E", "GGG" = "G")
 ```
 
-Function 1:
-The first function in the package is generating a random sequence of the bases in the desired length
+Function 1: The first function in the package is generating a random
+sequence of the bases in the desired length
 
 ```{r}
 generateRandomDNASequence <- function(sequenceLength){
@@ -59,9 +62,8 @@ generateRandomDNASequence <- function(sequenceLength){
 }
 ```
 
-
-Function 2:
-The second function in the package is a translation, where T is replaced with U, therefore transcribing DNA to RNA
+Function 2: The second function in the package is a translation, where T
+is replaced with U, therefore transcribing DNA to RNA
 
 ```{r}
 substitueDNARNA <- function(DNA_sequence){
@@ -70,9 +72,9 @@ substitueDNARNA <- function(DNA_sequence){
 }
 ```
 
-
-Function 3:
-The third function in the package is taking in the DNA sequence, indicating start of the sequence at one, and then reading it in codons, also known as the reading frame of the sequence.
+Function 3: The third function in the package is taking in the DNA
+sequence, indicating start of the sequence at one, and then reading it
+in codons, also known as the reading frame of the sequence.
 
 ```{r}
 settingReadingFrameCodons <- function(dnaSequence, start = 1){
@@ -85,9 +87,8 @@ settingReadingFrameCodons <- function(dnaSequence, start = 1){
 
 ```
 
-
-Function 4:
-The fourth function in the package is a translation of the RNA, generating the translated amino acids of the sequence. 
+Function 4: The fourth function in the package is a translation of the
+RNA, generating the translated amino acids of the sequence.
 
 ```{r}
 generateAAFromCodons <- function(codons){
@@ -96,9 +97,8 @@ generateAAFromCodons <- function(codons){
 }
 ```
 
-
-Function 5:
-The fifth function in the package is plotting the frequency of each amino acid observed in the sequence. 
+Function 5: The fifth function in the package is plotting the frequency
+of each amino acid observed in the sequence.
 
 ```{r}
 generateAminoAcidFrequencyPlot <- function(Sequence){
@@ -122,5 +122,15 @@ generateAminoAcidFrequencyPlot <- function(Sequence){
   return(frequency_plot)
 }
 ```
+
+### Group Discussion
+1. Describe each function to each other in order - both what it does and which names you gave them and their variables.
+2. Describe how you added the two packages as dependencies.
+3. Discuss why it is a good idea to limit the number of dependencies your package has. When can’t it always be avoided? - Chunxu
+* Portability: Limiting dependencies can improve the portability of your package. If your package has fewer dependencies, it is more likely to work on different systems and environments without requiring additional installations or configuration, which make it easier for users to isntall and use.
+* Efficiency: Having fewer dependencies can help your package run more efficiently and save time while installing and loading.
+* Reduced complexity: Every dependency adds complexity to your package. It's easier for developers to maintain the package.
+4. Discuss the difference between adding an @importFrom package function tag to a function description compared to using package::function().
+* It can be cumbersome to use package::function() repeatedly throughout your code, especially if you use many functions from the same package.
 
 
