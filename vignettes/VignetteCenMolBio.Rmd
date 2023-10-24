@@ -1,6 +1,6 @@
 ---
 title: "VignetteCenMolBio"
-output: rmarkdown::pdf_vignette
+output: rmarkdown::github_document
 vignette: >
   %\VignetteIndexEntry{VignetteCenMolBio}
   %\VignetteEngine{knitr::rmarkdown}

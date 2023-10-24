@@ -1,5 +1,5 @@
 ---
-output: github_document
+output: rmarkdown::github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -19,13 +19,16 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 The 'CentralMolBio' package, is a collection of useful functions for analysing biological data.
-including reading, subtitute and translating sequences.
+including reading, subtitute and translating sequences.gg
 
 ## Installation
 
 The package can be install either of these methods:
+
 - devtools::install_github("Superstinse99/Group_10_package")
+
 - install.packages("Group_10_package")
+
 ``` r
 # install.packages("devtools")
 devtools::install_github("Superstinse99/group_10_package")
@@ -104,6 +107,7 @@ generateAAFromCodons <- function(codons){
   AA <- paste0(codon_table[codons], collapse = "")
   return(AA)
 }
+
 ```
 
 

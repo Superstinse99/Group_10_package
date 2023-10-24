@@ -8,7 +8,7 @@
 
 The ‘CentralMolBio’ package, is a collection of useful functions for
 analysing biological data. including reading, subtitute and translating
-sequences.
+sequences.gg
 
 ## Installation
 
