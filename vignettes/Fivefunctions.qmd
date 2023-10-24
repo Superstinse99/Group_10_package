@@ -1,0 +1,82 @@
+---
+title: "Functions"
+format: html
+editor: visual
+---
+
+## Function One
+
+Makes sequence with length of your choosing
+
+```{r}
+Sequence <- function(sequence_length){
+  seq <- sample(c("A", "T", "G", "C"), size = sequence_length, replace = TRUE)
+  seq_clean <- paste0(seq, collapse = "")
+  return(seq_clean)
+}
+
+```
+
+## Function Two
+
+Replaces "T" with "U" in a sequence
+
+```{r}
+substitueDNARNA <- function(DNA_sequence){
+  RNA_sequence <- gsub("T", "U", DNA_sequence)
+  return(RNA_sequence)}
+
+```
+
+## Function Three
+
+Takes DNA sequence, indicating start of the sequence at one, and then reading it in codons, also known as the reading frame of the sequence.
+
+```{r}
+settingReadingFrameCodons <- function(dnaSequence, start = 1){
+  sequenceLength <- nchar(dnaSequence)
+  codons <- substring(dnaSequence,
+                      first = seq(from = start, to = sequenceLength - 3 + 1, by = 3),
+                      last = seq(from = 3 + start - 1, to = sequenceLength, by = 3))
+  return(codons)
+}
+
+```
+
+## Function Four
+
+Translates RNA, generating the translated amino acids of the sequence.
+
+```{r}
+generateAAFromCodons <- function(codons){
+  AA <- paste0(codon_table[codons], collapse = "")
+  return(AA)
+}
+```
+
+## Function Five
+
+Plots the frequency of each amino acid observed in the sequence.
+
+```{r}
+generateAminoAcidFrequencyPlot <- function(Sequence){
+  amino_acids <- Sequence |>
+    stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
+    as.character() |>
+    unique()
+  
+  amino_acid_counts <- sapply(amino_acids, function(amino_acid) stringr::str_count(string = Sequence, pattern = amino_acid)) |>
+    as.data.frame()
+  
+  colnames(amino_acid_counts) <- c("Counts")
+  amino_acid_counts[["AminoAcid"]] <- rownames(amino_acid_counts)
+  
+  frequency_plot <- amino_acid_counts |>
+    ggplot2::ggplot(ggplot2::aes(x = AminoAcid, y = Counts, fill = AminoAcid)) +
+    ggplot2::geom_col() +
+    ggplot2::theme_bw() +
+    ggplot2::theme(legend.position = "none")
+  
+  return(frequency_plot)
+}
+```
