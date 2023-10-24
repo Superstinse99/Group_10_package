@@ -57,6 +57,7 @@ generateAAFromCodons <- function(codons){
 ```{r}
 # Define a function to generates an Amino Acid Frequency Plot by computing the frequency of each amino acid in a given amino acid sequence and visualizing the results in a bar chart
 # If you have a DNA sequence, and aim to check the AA frequency distribution of its translated peptide, please implement substitueDNARNA(), settingReadingFrameCodons(), generateAAFromCodons() and generateAminoAcidFrequencyPlot() sequentially.
+
 generateAminoAcidFrequencyPlot <- function(Sequence){
   amino_acids <- Sequence |>
     stringr::str_split(pattern = stringr::boundary("character"), simplify = TRUE) |>
@@ -76,4 +77,5 @@ generateAminoAcidFrequencyPlot <- function(Sequence){
     ggplot2::theme(legend.position = "none")
 
   return(frequency_plot)
+}
 ```
