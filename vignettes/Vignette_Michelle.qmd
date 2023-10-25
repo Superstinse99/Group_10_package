@@ -1,0 +1,37 @@
+---
+title: "Vignette_Michelle"
+format: html
+editor: visual
+---
+
+The 'CentralMolBio' package, is a collection of useful functions for analysing biological data. including reading, subtitute and translating sequences.
+
+The package can be install either of these methods: - devtools::install_github("Superstinse99/centralMolBio") -
+
+install.packages("centralMolBio")
+
+Function 1: Generates a random sequence of the bases in the wanted length. Length can be adjusted to needs.
+
+Function 2: Translation function, translates DNA to RNA.
+
+Function 3: Function takes a input sequence, and splits it into codons in 3 aminoacids (reading frame)
+
+Function 4: Translates RNA to generate the translated amino acids.
+
+Function 5: Plots the frequence of each amino acid in the sequence.
+
+\### Group Discussion
+
+1\. Describe each function to each other in order - both what it does and which names you gave them and their variables.
+
+2\. Describe how you added the two packages as dependencies.
+
+?
+
+3\. Discuss why it is a good idea to limit the number of dependencies your package has. When can't it always be avoided?
+
+Fewer dependencies makes it more likely to work on different systems without needing more packages installed etc. It also leaves less room for user errors.
+
+4\. Discuss the difference between adding an \@importFrom package function tag to a function description compared to using package::function().
+
+Its easier to use importfrom instead of having to use package::function() every time you use the function. If you only use it once it should not matter.
