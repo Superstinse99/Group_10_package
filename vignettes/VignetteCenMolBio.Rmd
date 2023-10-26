@@ -126,9 +126,9 @@ generateAminoAcidFrequencyPlot <- function(Sequence){
 ### Group Discussion
 1. Describe each function to each other in order - both what it does and which names you gave them and their variables.
 2. Describe how you added the two packages as dependencies.
-3. Discuss why it is a good idea to limit the number of dependencies your package has. When can’t it always be avoided? - Chunxu
+3. Discuss why it is a good idea to limit the number of dependencies your package has. When can’t it always be avoided?
 * Portability: Limiting dependencies can improve the portability of your package. If your package has fewer dependencies, it is more likely to work on different systems and environments without requiring additional installations or configuration, which make it easier for users to install and use.
-* Efficiency: Having fewer dependencies can help your package run more efficiently and save time while installing and loading.
+* Efficiency: Having fewer dependencies can help your package run more efficiently and save time while installing and loading. This also makes it more likely to work with other packages. 
 * Reduced complexity: Every dependency adds complexity to your package. It's easier for developers to maintain the package.
 4. Discuss the difference between adding an @importFrom package function tag to a function description compared to using package::function().
 * It can be cumbersome to use package::function() repeatedly throughout your code, especially if you use many functions from the same package.
