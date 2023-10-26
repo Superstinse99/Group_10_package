@@ -12,7 +12,7 @@ sequences.
 
 ## Installation
 
-The package can be install either of these methods:
+The package can be install either of these methods::
 
 - devtools::install_github(“Superstinse99/Group_10_package”)
 

@@ -1,5 +1,5 @@
 ---
-output: github_document
+output: rmarkdown::pdf_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -14,9 +14,6 @@ knitr::opts_chunk$set(
 ```
 
 # centralMolBio
-
-<!-- badges: start -->
-<!-- badges: end -->
 
 The 'CentralMolBio' package, is a collection of useful functions for analysing biological data.
 including reading, subtitute and translating sequences.
@@ -35,27 +32,6 @@ devtools::install_github("Superstinse99/group_10_package")
 library(centralMolBio)
 ```
 
-## Codon Table
-The given codon table is used in the package:
-
-```{r}
-codon_table <- c("UUU" = "F", "UCU" = "S", "UAU" = "Y", "UGU" = "C",
-  "UUC" = "F", "UCC" = "S", "UAC" = "Y", "UGC" = "C",
-  "UUA" = "L", "UCA" = "S", "UAA" = "_", "UGA" = "_",
-  "UUG" = "L", "UCG" = "S", "UAG" = "_", "UGG" = "W",
-  "CUU" = "L", "CCU" = "P", "CAU" = "H", "CGU" = "R",
-  "CUC" = "L", "CCC" = "P", "CAC" = "H", "CGC" = "R",
-  "CUA" = "L", "CCA" = "P", "CAA" = "Q", "CGA" = "R",
-  "CUG" = "L", "CCG" = "P", "CAG" = "Q", "CGG" = "R",
-  "AUU" = "I", "ACU" = "T", "AAU" = "N", "AGU" = "S",
-  "AUC" = "I", "ACC" = "T", "AAC" = "N", "AGC" = "S",
-  "AUA" = "I", "ACA" = "T", "AAA" = "K", "AGA" = "R",
-  "AUG" = "M", "ACG" = "T", "AAG" = "K", "AGG" = "R",
-  "GUU" = "V", "GCU" = "A", "GAU" = "D", "GGU" = "G",
-  "GUC" = "V", "GCC" = "A", "GAC" = "D", "GGC" = "G",
-  "GUA" = "V", "GCA" = "A", "GAA" = "E", "GGA" = "G",
-  "GUG" = "V", "GCG" = "A", "GAG" = "E", "GGG" = "G")
-```
 
 Function 1:
 The first function in the package is generating a random sequence of the bases in the desired length
@@ -132,3 +108,14 @@ generateAminoAcidFrequencyPlot <- function(Sequence){
   return(frequency_plot)
 }
 ```
+
+### Group Discussion
+1. Describe each function to each other in order - both what it does and which names you gave them and their variables.
+2. Describe how you added the two packages as dependencies.
+3. Discuss why it is a good idea to limit the number of dependencies your package has. When can’t it always be avoided?
+* Portability: Limiting dependencies can improve the portability of your package. If your package has fewer dependencies, it is more likely to work on different systems and environments without requiring additional installations or configuration, which make it easier for users to install and use.
+* Efficiency: Having fewer dependencies can help your package run more efficiently and save time while installing and loading. This also makes it more likely to work with other packages. 
+* Reduced complexity: Every dependency adds complexity to your package. It's easier for developers to maintain the package.
+4. Discuss the difference between adding an @importFrom package function tag to a function description compared to using package::function().
+* It can be cumbersome to use package::function() repeatedly throughout your code, especially if you use many functions from the same package.
+

@@ -1,6 +1,6 @@
 ---
 title: "VignetteCenMolBio"
-output: rmarkdown::github_vignette
+output:rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{VignetteCenMolBio}
   %\VignetteEncoding{UTF-8}
